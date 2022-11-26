@@ -45,8 +45,7 @@ pzplot(ARMA_poly2) % Pole (far) unit circle => the AR-part is non-stationary
 % well but underestimates slightly.
 % Why? estimated covariance is only asymptotically identical to
 % theoretical. We use the biased estimator with 1/N in denominator which
-% reduces the values more than the unbiased (but its better because the
-% variance of the estimate is constant?)
+% reduces the values
 figure();
 m = 20; % Should never be higher than N/4 but thats obviously not a problem
 r_theo = kovarians(ARMA_poly1.c, ARMA_poly1.a, m); % Computes theoretical covariance-function given C and A
@@ -54,15 +53,8 @@ stem(0:m, r_theo*sigma2);
 hold on;
 r_est = covf(y1, m+1); % Estimates covariance function given a realization;
 stem(0:m, r_est, 'r');
-%% Proceeding to re-estimate our model using the realization y1
-% "Basic analysis using ACF, PACF and normplot"
-[ACFest, PACFest] = ACFPACFNormplot(y1, m);
 %%
-data = iddata(y1);
-%%
-ar_model2 = arx(y1, 2);
-ar_model3 = arx(y1, 3);
-arma_model22= armax(y1, [2,2]);
+
 
 
 

@@ -1,0 +1,10 @@
+function [ACFest, PACFest] = ACFPACFNormplot(y, noLags, signLvl)
+    if nargin < 3
+        signLvl = 0.05; % Significance lvl
+    end
+    figure();
+    subplot(211);
+    ACFest = acf(y, noLags, signLvl, 1);
+    subplot(212);
+    PACFest = pacf(y,)
+end
